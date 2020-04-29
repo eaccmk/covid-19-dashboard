@@ -50,6 +50,7 @@ export default class CaseDetailsComponent extends Component {
 
   @(task(function* (location) {
     this.loading = true;
+
     const { data: todayHealthRecords } = yield this.elide.fetch.linked().perform('latestHealthRecords', {
       eq: { wikiId: location.attributes.wikiId },
       fields: {
@@ -66,6 +67,7 @@ export default class CaseDetailsComponent extends Component {
       },
       limit: 1,
     });
+
     const todayRecord = todayHealthRecords[0]?.attributes;
     this.summaryRecord = todayRecord;
 

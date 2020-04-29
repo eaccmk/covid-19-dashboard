@@ -1,0 +1,22 @@
+{{!-- Copyright 2020, Verizon Media. Licensed under the terms of the Apache License, Version 2.0. See accompanying LICENSE.md file for terms. --}}
+<div
+  class="chart-container"
+  {{did-insert this.fetchData @location}}
+  {{did-update this.fetchData @location}}
+  ...attributes
+>
+  <TimeSeries
+    class="chart-container__timeseries"
+    @records={{this.records}}
+    @title="Cases over time"
+    @width="95%"
+    @height="200px"
+  />
+  <StackedBar
+    class="chart-container__stacked-bar"
+    @records={{this.records}}
+    @title="Daily Change"
+    @width="95%"
+    @height="200px"
+  />
+</div>

@@ -2,7 +2,7 @@ import { findAll } from '@ember/test-helpers';
 
 export const assertGlobalDetails = (assert, parent = '.dashboard__global-case-details') => {
   const casesTotal = '1,076,017',
-    casesChange = '+1,000 | +0.1%',
+    casesChange = '+171,000 | +18.9%',
     fatalTotal = '58,004',
     fatalChange = '0';
 
