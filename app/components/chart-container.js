@@ -8,6 +8,8 @@ import { task } from 'ember-concurrency';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
+const DATA_LOOKBACK = 30;
+
 export default class ChartContainerComponent extends Component {
   @service elide;
   @tracked records;
@@ -16,13 +18,26 @@ export default class ChartContainerComponent extends Component {
   fetchData() {
     const { location } = this.args;
     if (location) {
-      this.fetchRecords.perform(location);
+      this.fetchRecords.perform(location, this.lookbackDate);
     }
   }
 
-  @(task(function* (location) {
+  get lookbackDate() {
+    const d = new Date();
+    d.setDate(d.getDate()-DATA_LOOKBACK);
+    let year = d.getFullYear(),
+          month = d.getMonth(),
+          date = d.getDate();
+
+    month = month > 10 ? month : `0${month}`;
+    date = date > 10 ? date : `0${date}`;
+    return `${year}-${month}-${date}T00:00Z`;
+  }
+
+  @(task(function* (location, lookbackDate) {
     const records = yield this.elide.fetch.perform('healthRecords', {
       eq: { wikiId: location.attributes.wikiId },
+      ge: { referenceDate: [lookbackDate] },
       fields: {
         healthRecords: [
           'referenceDate',
