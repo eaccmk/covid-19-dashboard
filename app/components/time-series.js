@@ -41,7 +41,6 @@ export default class TimeSeriesComponent extends Component {
         offsetX: 20
       },
       markers: {
-        size: 3,
         hover: {
           size: 4
         }
