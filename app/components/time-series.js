@@ -15,8 +15,6 @@ export default class TimeSeriesComponent extends Component {
   @service intl;
 
   get chartOptions() {
-    const { ymin, ymax } = this;
-
     return {
       chart: {
         toolbar: {
@@ -75,8 +73,6 @@ export default class TimeSeriesComponent extends Component {
           offsetX: 20,
           offsetY: -5
         },
-        min: ymin,
-        max: ymax,
         tickAmount: 3
       }
     };
@@ -104,7 +100,6 @@ export default class TimeSeriesComponent extends Component {
   }
 
   getSeriesForMetric(data, metric) {
-    let min = 0, max = 0;
     const results = []
     data.forEach(row => {
       const seriesObj = {};
@@ -112,13 +107,7 @@ export default class TimeSeriesComponent extends Component {
       const cases = row[metric];
       seriesObj.y = cases;
       results.push(seriesObj);
-
-      if(cases < min) min = cases;
-      if(cases > max) max = cases;
     });
-
-    this.ymin = min;
-    this.ymax = max;
 
     return results;
   }
