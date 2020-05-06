@@ -14,6 +14,8 @@ export default class ChartContainerComponent extends Component {
   @service elide;
   @tracked records;
 
+  showBarChart = false;
+
   @action
   fetchData() {
     const { location } = this.args;

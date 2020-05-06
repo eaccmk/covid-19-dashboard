@@ -5,13 +5,42 @@
   {{did-update this.fetchData @location}}
   ...attributes
 >
-  <TimeSeries
-    class="chart-container__timeseries"
-    @records={{this.records}}
-    @title="Cases over time"
-    @width="95%"
-    @height="200px"
-  />
+  <div class="chart-container__timeseries-container">
+    <TimeSeries
+      class="chart-container__timeseries"
+      @records={{this.records}}
+      @title="Cases over time"
+      @height="200px"
+    />
+    {{#unless @isMobile}}
+      <span class="chart-container__expand-icon" {{on "click" (fn (mut this.showLineChartModal) true)}}>
+        {{svg-jar
+          "expand-fullscreen"
+          class="m-r-3"
+          width="10px"
+          height="10px"
+        }}
+      </span>
+      {{#if this.showLineChartModal}}
+        <div class="chart-container__timeseries-modal modal is-active" ...attributes>
+          <div class="modal-container">
+            <span class="close link" {{on "click" (fn (mut this.showLineChartModal) false)}}>
+              {{svg-jar "close" class="modal__close-icon m-r-3" width="20px" height="20px"}}
+            </span>
+            <div class="modal-header">
+              <h3>Cases over time</h3>
+            </div>
+            <div class="modal-content">
+              <TimeSeries
+                @records={{this.records}}
+                @height="500px"
+              />
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{/unless}}
+  </div>
   {{#if this.showBarChart}}
     <StackedBar
       class="chart-container__stacked-bar"

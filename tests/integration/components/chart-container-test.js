@@ -7,7 +7,7 @@ module('Integration | Component | chart-container', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    assert.expect(7);
+    assert.expect(4);
 
     await render(hbs`
       <ChartContainer @location={{hash attributes=(hash wikiId="Earth")}} />
@@ -23,11 +23,11 @@ module('Integration | Component | chart-container', function(hooks) {
     assert.dom('.chart-container .chart-container__timeseries .ember-apex-chart')
       .exists('A timeseries chart is also rendered in the chart container');
 
-    assert.dom('.chart-container .chart-container__stacked-bar')
-      .exists('A timeseries is rendered in the chart container');
-    assert.dom('.chart-container__stacked-bar .stacked-bar__title')
-      .hasText('Daily Change', 'the stacked bar chart renders with a title');
-    assert.dom('.chart-container .chart-container__stacked-bar .ember-apex-chart')
-      .exists('A stacked bar chart is also rendered in the chart container');
+    // assert.dom('.chart-container .chart-container__stacked-bar')
+    //   .exists('A timeseries is rendered in the chart container');
+    // assert.dom('.chart-container__stacked-bar .stacked-bar__title')
+    //   .hasText('Daily Change', 'the stacked bar chart renders with a title');
+    // assert.dom('.chart-container .chart-container__stacked-bar .ember-apex-chart')
+    //   .exists('A stacked bar chart is also rendered in the chart container');
   });
 });

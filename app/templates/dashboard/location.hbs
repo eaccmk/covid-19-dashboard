@@ -47,7 +47,8 @@
         />
       {{/if}}
       <ChartContainer
-        class="dashboard__divider p-t-10"
+        class="dashboard__chart-container dashboard__divider p-t-10"
+        @isMobile={{this.screen.isMobile}}
         @location={{this.currentLocation}}
       />
       <HelpLinks class="dashboard__divider p-t-10" />

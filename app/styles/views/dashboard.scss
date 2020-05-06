@@ -98,4 +98,8 @@ $map-header-height--small: 40px;
       }
     }
   }
+
+  .leaflet-top, .leaflet-bottom {
+    z-index: 400;
+  }
 }
