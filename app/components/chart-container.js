@@ -35,7 +35,7 @@ export default class ChartContainerComponent extends Component {
   }
 
   @(task(function* (location, lookbackDate) {
-    const records = yield this.elide.fetch.perform('healthRecords', {
+    const records = yield this.elide.fetch.linked().perform('healthRecords', {
       eq: { wikiId: location.attributes.wikiId },
       ge: { referenceDate: [lookbackDate] },
       fields: {

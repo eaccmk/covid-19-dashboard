@@ -12,11 +12,13 @@
     @width="95%"
     @height="200px"
   />
-  <StackedBar
-    class="chart-container__stacked-bar"
-    @records={{this.records}}
-    @title="Daily Change"
-    @width="95%"
-    @height="200px"
-  />
+  {{#if this.showBarChart}}
+    <StackedBar
+      class="chart-container__stacked-bar"
+      @records={{this.records}}
+      @title="Daily Change"
+      @width="95%"
+      @height="200px"
+    />
+  {{/if}}
 </div>
