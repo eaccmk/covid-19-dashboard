@@ -13,7 +13,7 @@
       @height="200px"
     />
     {{#unless @isMobile}}
-      <span class="chart-container__expand-icon" {{on "click" (fn (mut this.showLineChartModal) true)}}>
+      <span role="button" class="chart-container__expand-icon" {{on "click" (fn (mut this.showLineChartModal) true)}}>
         {{svg-jar
           "expand-fullscreen"
           class="m-r-3"
@@ -24,7 +24,7 @@
       {{#if this.showLineChartModal}}
         <div class="chart-container__timeseries-modal modal is-active" ...attributes>
           <div class="modal-container">
-            <span class="close link" {{on "click" (fn (mut this.showLineChartModal) false)}}>
+            <span role="button" class="close link" {{on "click" (fn (mut this.showLineChartModal) false)}}>
               {{svg-jar "close" class="modal__close-icon m-r-3" width="20px" height="20px"}}
             </span>
             <div class="modal-header">
