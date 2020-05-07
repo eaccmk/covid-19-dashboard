@@ -54,3 +54,6 @@ label:
     numActiveCases: 'Total Active'
     totalDeaths: 'Total Fatal'
     totalRecoveredCases: 'Total Recovered'
+chartTitle:
+  time-series: 'Cases over time'
+  stacked-bar: 'Daily Change'

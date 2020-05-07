@@ -13,7 +13,10 @@ const DATA_LOOKBACK = 30;
 export default class ChartContainerComponent extends Component {
   @service elide;
   @tracked records;
+  @tracked showModal;
+  @tracked modalChart;
 
+  //feature flag bar chart
   showBarChart = false;
 
   @action
@@ -55,4 +58,10 @@ export default class ChartContainerComponent extends Component {
     this.records = records;
   }).restartable())
   fetchRecords;
+
+  @action
+  showModalFor(chartType) {
+    this.showModal = true;
+    this.modalChart = chartType;
+  }
 }
